@@ -56,6 +56,7 @@ function createPlatforms() {
 
 function startGame() {
     score = 0
+    resultDisplay.textContent = '0'
     grid.innerHTML = ''
     displayScore()
     createPlatforms()
