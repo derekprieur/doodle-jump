@@ -71,10 +71,10 @@ function displayScore() {
 }
 
 function movePlatforms() {
-    if (doodleBottom > 500) {
-        console.log(doodleBottom)
+    if (doodleBottom > 100 || isJumping) {
         platforms.forEach(platform => {
             platform.bottom -= 2
+
             platform.visual.style.bottom = `${platform.bottom}px`
 
             if (platform.bottom <= 5) {
