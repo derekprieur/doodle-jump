@@ -71,7 +71,8 @@ function displayScore() {
 }
 
 function movePlatforms() {
-    if (doodleBottom > 100) {
+    if ((doodleBottom > 100 && isJumping) || doodleBottom > 500) {
+        console.log(doodleBottom)
         platforms.forEach(platform => {
             platform.bottom -= 2
             platform.visual.style.bottom = `${platform.bottom}px`
@@ -95,9 +96,9 @@ function jump() {
     isJumping = true
     clearInterval(fallInterval)
     jumpInterval = setInterval(function () {
-        doodleBottom += 12
+        doodleBottom += 6
         doodle.style.bottom = `${doodleBottom}px`
-        if (doodleBottom > startPoint + 400) {
+        if (doodleBottom > startPoint + 300) {
             fall()
         }
         moveDoodle()
