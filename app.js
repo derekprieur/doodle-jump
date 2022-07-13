@@ -9,7 +9,7 @@ const platformWidth = 85
 const gridHeight = 900
 const gridWidth = 600
 const doodleWidth = 85
-const platforms = []
+let platforms = []
 let platformInterval
 let jumpInterval
 let fallInterval
@@ -52,10 +52,11 @@ function createPlatforms() {
         let platform = new Platform(platformBottom)
         platforms.push(platform)
     }
-    console.log(platforms)
 }
 
 function startGame() {
+    score = 0
+    grid.innerHTML = ''
     displayScore()
     createPlatforms()
     createdDoodle()
@@ -150,12 +151,15 @@ function fall() {
 }
 
 function gameOver() {
+    clearInterval(jumpInterval)
     clearInterval(fallInterval)
-    console.log("game over")
+    clearInterval(platformInterval)
+    platforms = []
     while (grid.firstChild) {
         grid.removeChild(grid.firstChild)
     }
     grid.innerHTML = score
+    startBtn.addEventListener('click', startGame)
 }
 
 function move(e) {
