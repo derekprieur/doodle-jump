@@ -1,6 +1,8 @@
 const grid = document.querySelector('.grid')
 const doodle = document.createElement('div')
 const startBtn = document.querySelector('.start-btn')
+const scoreDisplay = document.querySelector('.score')
+const resultDisplay = document.querySelector('.result')
 const platformCount = 5
 const platformHeight = 15
 const platformWidth = 85
@@ -54,11 +56,16 @@ function createPlatforms() {
 }
 
 function startGame() {
+    displayScore()
     createPlatforms()
     createdDoodle()
     platformInterval = setInterval(movePlatforms, 10)
     jump()
     startBtn.removeEventListener('click', startGame)
+}
+
+function displayScore() {
+    scoreDisplay.style.visibility = 'visible'
 }
 
 function movePlatforms() {
@@ -75,6 +82,7 @@ function movePlatforms() {
                 let newPlatform = new Platform(newBottom)
                 platforms.push(newPlatform)
                 score++
+                resultDisplay.textContent = score
             }
         })
     }
