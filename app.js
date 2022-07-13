@@ -3,7 +3,7 @@ const doodle = document.createElement('div')
 const startBtn = document.querySelector('.start-btn')
 const scoreDisplay = document.querySelector('.score')
 const resultDisplay = document.querySelector('.result')
-const platformCount = 5
+const platformCount = 6
 const platformHeight = 15
 const platformWidth = 85
 const gridHeight = 900
@@ -71,7 +71,7 @@ function displayScore() {
 }
 
 function movePlatforms() {
-    if ((doodleBottom > 100 && isJumping) || doodleBottom > 500) {
+    if (doodleBottom > 500) {
         console.log(doodleBottom)
         platforms.forEach(platform => {
             platform.bottom -= 2
